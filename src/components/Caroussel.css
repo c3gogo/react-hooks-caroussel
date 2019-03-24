@@ -1,0 +1,10 @@
+.image-caroussel {
+  width: 100%;
+}
+
+.image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
