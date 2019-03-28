@@ -8,13 +8,14 @@ export default function Caroussel(props) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
+    console.log("isPlaying", isPlaying);
     if (isPlaying) {
       let timeout = setTimeout(() => {
         setCurrentImage((currentImage + 1) % images.length);
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [isPlaying]);
+  }, [currentImage, isPlaying]);
 
   const imageStyle = {
     backgroundImage: `url(${images[currentImage]})`
@@ -22,7 +23,10 @@ export default function Caroussel(props) {
   return (
     <div className="image-caroussel">
       <div className="image" style={imageStyle} />
-      <Player onChangePlayingState={() => setIsPlaying(!isPlaying)} />
+      <Player
+        onChangePlayingState={() => setIsPlaying(!isPlaying)}
+        isPlaying={isPlaying}
+      />
     </div>
   );
 }
